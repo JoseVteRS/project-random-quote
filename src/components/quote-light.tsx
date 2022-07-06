@@ -16,6 +16,7 @@ const QuoteLight: FC<Props> = ({ quoteLight }) => {
         {quoteLight.quoteText}
         {'"'}
       </p>
+      <p className='text-xs mt-10'>{quoteLight.quoteGenre}</p>
     </div>
   );
 };
