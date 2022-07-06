@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import { GetServerSideProps } from "next";
 import Quote from "../src/components/quote";
 import { Quote as IQuote } from "../src/interfaces/quote.interface";
+import MainLayout from "../src/layouts/main-layout";
 
 type RandomQuoteProps = {
   randomQuote: IQuote;
@@ -10,9 +11,11 @@ type RandomQuoteProps = {
 const Home: NextPage<RandomQuoteProps> = ({ randomQuote }) => {
 
   return (
-    <div className="grid place-content-center min-h-screen w-7/12 mx-auto">
-      {randomQuote && <Quote quote={randomQuote} />}
-    </div>
+    <MainLayout>
+      <div className="grid place-content-center min-h-screen">
+        {randomQuote && <Quote quote={randomQuote} />}
+      </div>
+    </MainLayout>
   );
 };
 

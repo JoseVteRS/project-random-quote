@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FC } from "react";
 import { Quote } from "../interfaces/quote.interface";
 
@@ -16,17 +17,22 @@ const Quote: FC<Props> = ({ quote }) => {
           {'"'}
         </p>
       </div>
-      <div className="group  hover:bg-slate-800 w-full px-4 py-5 ml-4 flex items-center justify-between cursor-pointer">
-        <div>
-          <p className="text-md text-neutral-600 group-hover:text-neutral-100 font-semibold">
-            {quote.quoteAuthor}
-          </p>
-          <p className="text-xs text-gray-400">{quote.quoteGenre}</p>
-        </div>
-        <div className="hidden group-hover:block text-lg text-neutral-100 ">
-          →
-        </div>
-      </div>
+
+      <Link href={`author/${quote.quoteAuthor}`} prefetch>
+        <a>
+          <div className="group  hover:bg-slate-800 w-full px-4 py-5 ml-4 flex items-center justify-between cursor-pointer">
+            <div>
+              <p className="text-md text-neutral-600 group-hover:text-neutral-100 font-semibold">
+                {quote.quoteAuthor}
+              </p>
+              <p className="text-xs text-gray-400">{quote.quoteGenre}</p>
+            </div>
+            <div className="hidden group-hover:block text-lg text-neutral-100 ">
+              →
+            </div>
+          </div>
+        </a>
+      </Link>
     </>
   );
 };
