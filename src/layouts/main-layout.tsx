@@ -12,7 +12,7 @@ const MainLayout: FC<Props> = ({ children }) => {
 
   return (
     <>
-      <main className="w-10/12  md:w-5/12 mx-auto py-8">{children}</main>
+      <main className="w-10/12 md:w-5/12 mx-auto py-8 max-h-screen">{children}</main>
     </>
   );
 };

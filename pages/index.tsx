@@ -62,7 +62,7 @@ const Home: NextPage<RandomQuoteProps> = ({ randomQuote }) => {
         </div>
       )}
 
-      <div className="grid place-content-center min-h-screen">
+      <div className="grid place-content-center h-[85vh]">
         {randomQuote && quote == undefined && <Quote quote={randomQuote} />}
         {quote != undefined && <Quote quote={quote} />}
       </div>
