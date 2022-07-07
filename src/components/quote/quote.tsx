@@ -10,7 +10,7 @@ const Quote: FC<Props> = ({ quote }) => {
   if (!quote) return <p>Cargando...</p>;
   return (
     <>
-      <div className="mb-20 font-bold text-gray-700 text-xl border-l-4 border-l-yellow-500 pl-10">
+      <div className="mb-20 font-bold text-gray-700 text-xl border-l-4 border-l-yellow-500/50 pl-10">
         <p>
           {'"'}
           {quote.quoteText}
@@ -20,7 +20,7 @@ const Quote: FC<Props> = ({ quote }) => {
 
       <Link href={`author/${quote.quoteAuthor}`} prefetch>
         <a className="focus:outline-yellow-500">
-          <div className="group  hover:bg-slate-800 w-full px-4 py-5 ml-4 flex items-center justify-between cursor-pointer">
+          <div className="group  hover:bg-neutral-800 w-full px-4 py-5 ml-4 flex items-center justify-between cursor-pointer">
             <div>
               <p className="text-md text-neutral-600 group-hover:text-neutral-100 font-semibold">
                 {quote.quoteAuthor}

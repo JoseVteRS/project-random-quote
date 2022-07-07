@@ -5,7 +5,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'gentium': ['Gentium Book Plus', 'serif']
+      }
+    },
   },
   plugins: [],
 };

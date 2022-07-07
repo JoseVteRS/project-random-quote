@@ -35,7 +35,7 @@ const Home: NextPage<RandomQuoteProps> = ({ randomQuote }) => {
           placeholder="Search by author"
           className="rounded-md border border-yellow-500/40  p-2 text-md text-neutral-700 w-full focus:outline-yellow-500 focus:shadow-md"
         />
-        <Button onClick={getRandomQuote}>
+        <Button kind="transparent" onClick={getRandomQuote}>
           random <RefreshIcon />
         </Button>
       </div>

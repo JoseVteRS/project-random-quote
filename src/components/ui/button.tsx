@@ -2,8 +2,13 @@
 
 
 
-export interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, React.AriaAttributes  {
-  kind: 'primary' | 'secondary'
+export interface ButtonProps
+  extends React.DetailedHTMLProps<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    >,
+    React.AriaAttributes {
+  kind?: "primary" | "secondary" | 'transparent';
 }
 
 const BUTTON_KIND = {
