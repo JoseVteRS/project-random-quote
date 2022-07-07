@@ -1,7 +1,6 @@
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import Quote from "../../src/components/quote";
-import QuoteLight from "../../src/components/quote-light";
+import QuoteLight from "../../src/components/quote/quote-light";
 import { Quote as IQuote } from "../../src/interfaces/quote.interface";
 import MainLayout from "../../src/layouts/main-layout";
 
@@ -29,7 +28,7 @@ const QuotesByAuthorPage = ({ quotesByAuthor }: Props) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { quoteAuthor } = ctx.params;
+  const { quoteAuthor } = ctx.params as {quoteAuthor: string};
 
   const res = await fetch(
     `https://quote-garden.herokuapp.com/api/v3/quotes?author=${quoteAuthor}`

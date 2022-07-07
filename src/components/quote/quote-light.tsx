@@ -1,8 +1,5 @@
-
-
-
 import React, { FC } from 'react'
-import { Quote as IQuote } from '../interfaces/quote.interface'
+import { Quote as IQuote } from '../../interfaces/quote.interface'
 
 type Props = {
   quoteLight: IQuote;

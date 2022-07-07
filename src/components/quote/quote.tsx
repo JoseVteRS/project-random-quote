@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
-import { Quote } from "../interfaces/quote.interface";
+import { Quote } from "../../interfaces/quote.interface";
 
 type Props = {
   quote: Quote;
@@ -19,7 +19,7 @@ const Quote: FC<Props> = ({ quote }) => {
       </div>
 
       <Link href={`author/${quote.quoteAuthor}`} prefetch>
-        <a>
+        <a className="focus:outline-yellow-500">
           <div className="group  hover:bg-slate-800 w-full px-4 py-5 ml-4 flex items-center justify-between cursor-pointer">
             <div>
               <p className="text-md text-neutral-600 group-hover:text-neutral-100 font-semibold">
