@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { GetServerSideProps } from "next";
+import Link from "next/link";
 import { ChangeEvent, useContext, useState } from "react";
 import Quote from "../src/components/quote/quote";
 import Button from "../src/components/ui/button";
@@ -15,7 +16,6 @@ type RandomQuoteProps = {
 
 const Home: NextPage<RandomQuoteProps> = ({ randomQuote }) => {
   const { quote, getRandomQuote } = useContext(QuoteContext);
-
   const [quotes, setQuotesByAuthor] = useState([]);
 
   const handleSearch = async (query: string) => {
@@ -40,22 +40,24 @@ const Home: NextPage<RandomQuoteProps> = ({ randomQuote }) => {
         </Button>
       </div>
       {quotes && quotes.length > 0 && (
-        <div className=" rounded-xl shadow-lg shadow-neutral-500/30 p-3">
+        <div className=" rounded-xl shadow-lg shadow-neutral-500/30 hover:cursor-pointer h-72 overflow-y-scroll">
           {quotes.map((item: IQuote) => (
-            <div className="py-3" key={item._id}>
-              <p
-                className="text-xs text-neutral-800 mb-1 font-medium"
-                title={item.quoteAuthor}
-              >
-                {item.quoteAuthor}
-              </p>
-              <p
-                className="text-xs text-neutral-500 truncate"
-                title={item.quoteText}
-              >
-                {item.quoteText}
-              </p>
-            </div>
+            <Link href={`/author/${item.quoteAuthor}`} key={item._id}>
+              <div className="p-3 hover:bg-neutral-100">
+                <p
+                  className="text-xs text-neutral-800 mb-1 font-medium"
+                  title={item.quoteAuthor}
+                >
+                  {item.quoteAuthor}
+                </p>
+                <p
+                  className="text-xs text-neutral-500 truncate"
+                  title={item.quoteText}
+                >
+                  {item.quoteText}
+                </p>
+              </div>
+            </Link>
           ))}
         </div>
       )}
