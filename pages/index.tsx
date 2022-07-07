@@ -35,9 +35,9 @@ const Home: NextPage<RandomQuoteProps> = ({ randomQuote }) => {
           placeholder="Search by author"
           className="rounded-md border border-yellow-500/40  p-2 text-md text-neutral-700 w-full focus:outline-yellow-500 focus:shadow-md"
         />
-        <Button kind="transparent" onClick={getRandomQuote}>
-          random <RefreshIcon />
-        </Button>
+        <button className="group hover:text-neutral-700 flex items-center gap-2 text-neutral-400" onClick={getRandomQuote}>
+          random <RefreshIcon className="h-4 w-4 fill-neutral-400 group-hover:fill-neutral-700" />
+        </button>
       </div>
       {quotes && quotes.length > 0 && (
         <div className=" rounded-xl shadow-lg shadow-neutral-500/30 hover:cursor-pointer h-72 overflow-y-scroll">
@@ -45,13 +45,13 @@ const Home: NextPage<RandomQuoteProps> = ({ randomQuote }) => {
             <Link href={`/author/${item.quoteAuthor}`} key={item._id}>
               <div className="p-3 hover:bg-neutral-100">
                 <p
-                  className="text-xs text-neutral-800 mb-1 font-medium"
+                  className="text-md text-neutral-700 mb-1 font-bold"
                   title={item.quoteAuthor}
                 >
                   {item.quoteAuthor}
                 </p>
                 <p
-                  className="text-xs text-neutral-500 truncate"
+                  className="text-md text-neutral-500 truncate"
                   title={item.quoteText}
                 >
                   {item.quoteText}

@@ -25,7 +25,7 @@ const Quote: FC<Props> = ({ quote }) => {
               <p className="text-md text-neutral-600 group-hover:text-neutral-100 font-semibold">
                 {quote.quoteAuthor}
               </p>
-              <p className="text-xs text-gray-400">{quote.quoteGenre}</p>
+              <p className="text-md text-gray-400">{quote.quoteGenre}</p>
             </div>
             <div className="hidden group-hover:block text-lg text-neutral-100 ">
               →
