@@ -1,12 +1,13 @@
 import type { NextPage } from "next";
 import { GetServerSideProps } from "next";
-import { useContext } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import Quote from "../src/components/quote/quote";
 import Button from "../src/components/ui/button";
 import RefreshIcon from "../src/icons/refresh-icon";
 import { Quote as IQuote } from "../src/interfaces/quote.interface";
 import MainLayout from "../src/layouts/main-layout";
 import { QuoteContext } from "../src/lib/context/quote/quote-context";
+import { searchQuoteByAuthor } from "../src/services/api/search-by-author";
 
 type RandomQuoteProps = {
   randomQuote: IQuote;
@@ -15,14 +16,50 @@ type RandomQuoteProps = {
 const Home: NextPage<RandomQuoteProps> = ({ randomQuote }) => {
   const { quote, getRandomQuote } = useContext(QuoteContext);
 
+  const [quotes, setQuotesByAuthor] = useState([]);
+
+  const handleSearch = async (query: string) => {
+    const { quotesByAuthor } = await searchQuoteByAuthor(query);
+    if (quotesByAuthor) setQuotesByAuthor(quotesByAuthor.data);
+    if(query === "" ) setQuotesByAuthor([])
+  };
+
   return (
     <MainLayout>
       <div className="flex flex-wrap justify-end gap-2">
-        <input type="text" placeholder="Search by author" className="rounded-md border border-yellow-500/40  p-2 text-md text-neutral-700 w-full focus:outline-yellow-500 focus:shadow-md" />
+        <input
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            handleSearch(event.target.value)
+          }
+          type="text"
+          placeholder="Search by author"
+          className="rounded-md border border-yellow-500/40  p-2 text-md text-neutral-700 w-full focus:outline-yellow-500 focus:shadow-md"
+        />
         <Button onClick={getRandomQuote}>
           random <RefreshIcon />
         </Button>
       </div>
+      {quotes && quotes.length > 0 && (
+        <div className=" rounded-xl shadow-lg shadow-neutral-500/30 p-3">
+          {quotes.map((item: IQuote) => (
+            <div className="py-3" key={item._id}>
+              <p
+                className="text-xs text-neutral-800 mb-1 font-medium"
+                title={item.quoteAuthor}
+              >
+                {item.quoteAuthor}
+              </p>
+              <p
+                className="text-xs text-neutral-500 truncate"
+                title={item.quoteText}
+              >
+                {item.quoteText}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+
       <div className="grid place-content-center min-h-screen">
         {randomQuote && quote == undefined && <Quote quote={randomQuote} />}
         {quote != undefined && <Quote quote={quote} />}

@@ -1,1 +1,2 @@
-export const API_URL = 'https://zenquotes.io/api'
+export const API_URL =
+  "https://quote-garden.herokuapp.com/api/v3";
